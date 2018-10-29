@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<title> form </title>
+
+<head>
+    <h3>enter your name</h3>
+</head>
+
+<body>
+    <label for="name">name</label>
+    <input type="text" name="name" id="name" />
+
+    <label>gender</label>
+    <input type="radio" name="gender" id="male"><label for="male">male</label>
+    <input type="radio" name="gender" id="female"><label for="female">female</label>
+
+    <button id="btn">determine gender</button>
+
+    <p id="output"></p>
+    <script src='./js/axios.js'></script>
+    <script>
+
+        let btnHandle = document.getElementById('btn');
+        let outputHandle = document.getElementById('output');
+        let nameHandle = document.getElementById('name');
+        let maleHandle = document.getElementById('male');
+        let femaleHandle = document.getElementById('female');
+
+        btnHandle.addEventListener('click', function (e) {
+            e.preventDefault();
+            var api_key = 'pRPLCejozFwCHFbVCR';
+            var url = `http://gender-api.com/get?name=${nameHandle.value}&key=${api_key}`;
+
+            axios.get(url).then(function (response) {
+                var result = response.data;
+                if (result.gender === 'male'){
+                maleHandle.checked = 'checked';
+                }
+                else if(result.gender === 'female'){
+                    femaleHandle.checked = 'checked';
+                }
+                else{
+                    outputHandle.innerHTML = 'result is unknown';
+                }
+            }).catch(function (err) {
+                console.log(err);
+            })
+        }, false)
+
+
+    </script>
+
+
+</body>
+
+</html>

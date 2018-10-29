@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<table border="2">
+  <thead>
+      <tr>
+          <th>name</th>
+          <th>height</th>
+          <th>place</th>
+        </tr>
+  </thead>
+  <tbody id="list">
+
+  </tbody> 
+</table>
+
+<body>
+  <script>
+    let mountains = [{ name: 'Andes', height: '5000 mts', place: 'South America' }, { name: 'Alphs', height: '6000 mts', place: 'Europe' }, { name: 'Himalaya', height: '7000 mts', place: 'India' }];
+
+    mountains.forEach((mountain) => {
+      
+      let listHandle = document.getElementById('list');
+
+      let tr = document.createElement('tr');
+      let td1 = document.createElement('td');
+      let td2 = document.createElement('td');
+      let td3 = document.createElement('td');
+
+      let name = document.createTextNode(mountain.name);
+      let place = document.createTextNode(mountain.place);
+      let height = document.createTextNode(mountain.height);
+
+      td1.appendChild(name);
+      td2.appendChild(place);
+      td3.appendChild(height);
+
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+      tr.appendChild(td3);
+
+      listHandle.appendChild(tr);
+    })
+
+  </script>
+</body>
+
+</html>
